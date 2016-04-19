@@ -1,12 +1,16 @@
 import React from 'react';
 import SearchBox from './SearchBox'
+import MovieList from './MovieList'
 
 export default React.createClass(
    {
       render: function()
       {
          return (
-            <SearchBox />
+            <div>
+               <SearchBox />
+               <MovieList />
+            </div>
          )
       }
    }

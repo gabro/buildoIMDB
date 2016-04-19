@@ -7,8 +7,8 @@ import { Provider } from 'react-redux'
 import { moviesReducer } from './reducers'
 
 const store = createStore(
-   moviesReducer, 
-   {searchString: ''},
+   moviesReducer,
+   {searchString: '', isFetching: false, movies: []},
    applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(

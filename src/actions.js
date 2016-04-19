@@ -8,7 +8,7 @@ export const fetchMovies = (searchString) => {
 
       return fetch('http://www.omdbapi.com/?s=' + searchString + '&plot=short&r=json')
          .then(response => response.json())
-         .then(json => dispatch(receiveMovies(json)));
+         .then(json => dispatch(receiveMovies(json.Search)));
    }
 }
 
@@ -19,11 +19,10 @@ export const requestMovies = (searchString) => {
    };
 }
 
-export const receiveMovies = (json) => {
-   console.log(json);
+export const receiveMovies = (movies = []) => {
    return {
       type: FETCH_MOVIES,
       status: 'success',
-      movies: json
+      movies: movies
    }
 }
