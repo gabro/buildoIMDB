@@ -7,7 +7,8 @@ const Movie =  React.createClass({
       return {
          isFetchingPoster: true,
          isFetchingInfo: false,
-         isFetchingPosterFailed: false
+         isFetchingPosterFailed: false,
+         isFetchingInfoFailed: false
       }
    },
 
@@ -30,9 +31,10 @@ const Movie =  React.createClass({
    },
 
    render: function() {
+
       let imageClasses = classNames(
          'poster-image',
-         { 'poster-image-loading': this.state.isFetchingPoster },
+         { 'poster-image-load': this.state.isFetchingPoster },
          { 'poster-image-notfound' : this.state.isFetchingPosterFailed });
 
       return (

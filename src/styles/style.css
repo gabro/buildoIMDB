@@ -23,6 +23,7 @@ body {
     border: 0;
     background: #eee;
     border-radius: 3px;
+    color: black;
 }
 
 .form-wrapper input:focus {
@@ -143,13 +144,13 @@ body {
     width: 150px;
     height: 200px;
     margin-right: 20px;
-    background-image: url('./images/loading.gif');
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url('./images/notfound.png');
 }
 
 .poster-image-loading {
-    backgorund-image: url('./images/loading.gif');
+    background-image: url('./images/loading.gif');
 }
 
 .poster-image-notfound {
