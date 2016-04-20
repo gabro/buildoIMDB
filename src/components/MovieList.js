@@ -7,7 +7,7 @@ const MovieListInt =  React.createClass({
    render: function() {
       return (
             <div id="movieList">
-            { this.props.movies.map(movie => <Movie key={movie.imdbID} info={movie} />) }
+            { this.props.movies.map(movie => <Movie key={movie.imdbID} {...movie}/>) }
             </div>
       );
    },
