@@ -11,7 +11,7 @@ require("./styles/style.css");
 
 const store = createStore(
    moviesReducer,
-   {searchString: '', isFetching: false, movies: []},
+   {isFetching: false, movies: [], errorMessage: ''},
    applyMiddleware(thunkMiddleware));
 
 const omdbApi = new OmdbApi(store.dispatch);

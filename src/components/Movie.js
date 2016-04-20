@@ -6,8 +6,13 @@ const Movie =  React.createClass({
    getInitialState: function() {
       return {
          isFetchingPoster: true,
+         isFetchingInfo: false,
          isFetchingPosterFailed: false
       }
+   },
+
+   componentDidMount: function() {
+      this.props.fetchMovieInfo(this.props.imdbID);
    },
 
    onPosterLoad: function() {
@@ -33,10 +38,12 @@ const Movie =  React.createClass({
 
       return (
             <div className="movie-box">
-               <img src={this.props.Poster} className={imageClasses} onLoad={ this.onPosterLoad } onError= { this.onPosterError } />
+               <img src={this.props.Poster != 'N/A' ? this.props.Poster : ''} className={imageClasses} onLoad={ this.onPosterLoad } onError= { this.onPosterError } />
                <div className="movie-info">
                   <div className="movie-title">{this.props.Title}</div>
                   <div className="movie-year">{this.props.Year}</div>
+                  { !this.state.isFetchingInfo ? <div className="movie-plot">{this.props.Plot}</div> : null }
+                  { !this.state.isFecthingInfo && this.props.imdbRating != 'N/A' ? <div className="movie-rating">rating: {this.props.imdbRating} / {this.props.imdbVotes} votes</div> : null }
                </div>
             </div>
       );

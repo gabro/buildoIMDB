@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Movie from './Movie'
+import { fetchMovieInfo } from '../actions'
+
 
 const MovieListInt =  React.createClass({
 
@@ -8,7 +10,7 @@ const MovieListInt =  React.createClass({
       return (
             <div id="movieList">
             { this.props.errorMessage ? <div className="errorMessage">{ this.props.errorMessage }</div> : null }
-            { this.props.movies.map(movie => <Movie key={movie.imdbID} {...movie}/>) }
+            { this.props.movies.map(movie => <Movie fetchMovieInfo={ this.props.fetchMovieInfo } key={movie.imdbID} {...movie}/>) }
             </div>
       );
    },
@@ -30,9 +32,15 @@ const mapStateToProps = (state, props) => {
    }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+   return {
+      fetchMovieInfo: (movieId) => dispatch(fetchMovieInfo(ownProps.omdbApi, movieId))
+   }
+}
+
 const MovieList = connect(
    mapStateToProps,
-   null
+   mapDispatchToProps
 )(MovieListInt);
 
 export default MovieList;

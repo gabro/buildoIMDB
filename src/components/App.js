@@ -8,8 +8,8 @@ export default React.createClass(
       {
          return (
             <div>
-               <SearchBox omdbApi={this.props.omdbApi} />
-               <MovieList />
+               <SearchBox omdbApi={ this.props.omdbApi } />
+               <MovieList omdbApi={ this.props.omdbApi } />
             </div>
          )
       }

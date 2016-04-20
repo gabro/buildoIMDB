@@ -1,4 +1,4 @@
-import { receiveMovies, showErrorMessage } from '../actions'
+import { receiveMovies, showErrorMessage, receiveMovieInfo } from '../actions'
 
 export default function OmdbApi(dispatch) {
 	this.IsError = function(resp) {
@@ -18,4 +18,19 @@ export default function OmdbApi(dispatch) {
          })
          .catch(e => dispatch(showErrorMessage('Sorry, something went wrong')));
   	};
+
+
+  	this.fetchMovieInfo = function(dispatch, movieID) {
+  		return fetch('http://www.omdbapi.com/?i=' + movieID + '&plot=short&r=json')
+         .then(response => response.json())
+         .then(json => {
+         	if(this.IsError(json)) {
+         		dispatch(showErrorMessage(json.Error))
+         	}
+         	else {
+         		dispatch(receiveMovieInfo(json))
+         	}
+         })
+         .catch(e => dispatch(showErrorMessage('Sorry, something went wrong')));
+  	}
 }
