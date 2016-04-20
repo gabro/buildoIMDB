@@ -4,22 +4,34 @@ import { fetchMovies } from '../actions'
 
 const SearchBoxInt =  React.createClass({
 
+   getInitialState: function() {
+      return { searchString: '' };
+   },
+
+   handleSubmit: function(e) {
+      this.props.onSearchBoxSubmit(this.state.searchString);
+      e.preventDefault();
+   },
+
    handleChange: function(e) {
-         this.props.onSearchBoxChange(e.target.value);
+      this.setState({
+         searchString: e.target.value
+      });
    },
 
    render: function() {
       return (
-         <form className="form-wrapper cf">
-            <input type="text" placeholder="Search here..." value={this.props.searchString} onChange={this.handleChange} required />
-            <button type="submit">Search</button>
+         <form className="form-wrapper cf" onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="Search here..." value={this.state.searchString} onChange={this.handleChange} required />
+            <button type="submit">
+               {this.state.loading ? 'Loading...' : 'Search'}
+            </button>
          </form>
       );
    },
 
    propTypes: {
-      onSearchBoxChange: PropTypes.func.isRequired,
-      searchString: PropTypes.string.isRequired
+      onSearchBoxSubmit: PropTypes.func.isRequired
    }
 });
 
@@ -31,7 +43,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      onSearchBoxChange: (searchString) => {
+      onSearchBoxSubmit: (searchString) => {
          dispatch(fetchMovies(searchString));
       }
    }
