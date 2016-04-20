@@ -22,6 +22,7 @@ module.exports = {
          test: /\.css$/,
          loader: "style-loader!css-loader"
       },
+      { test: /\.(png|jpg|gif)$/, loader: 'file-loader' },
       {
          test: /\.js$/,
          loaders: ['react-hot', 'babel'],

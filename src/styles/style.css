@@ -69,6 +69,13 @@ body {
     margin-left: -81px;
 }
 
+.form-wrapper button.fetching {
+    content: '';
+    background-image: url('./images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .form-wrapper button:hover{
     background: #e54040;
 }
@@ -116,12 +123,38 @@ body {
     zoom:1;
 }
 
-.movieBox {
+.movie-box {
     width: 60%;
-    padding: 15px;
+    height: 200px;
     margin: 10px auto 10px auto;
     background: #444;
     background: rgba(0,0,0,.2);
-    border-radius: 10px;
     box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.movie-box > .movie-info {
+    padding: 20px 40px;
+}
+
+.poster-image {
+    float: left;
+    width: 150px;
+    height: 200px;
+    margin-right: 20px;
+    background-image: url('./images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.poster-image-loading {
+    backgorund-image: url('./images/loading.gif');
+}
+
+.poster-image-notfound {
+    background-image: url('./images/notfound.png');
+}
+
+.movie-title {
+    font-weight: bold;
+    font-size: 15pt;
 }
