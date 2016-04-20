@@ -8,7 +8,7 @@ export default React.createClass(
       {
          return (
             <div>
-               <SearchBox />
+               <SearchBox omdbApi={this.props.omdbApi} />
                <MovieList />
             </div>
          )

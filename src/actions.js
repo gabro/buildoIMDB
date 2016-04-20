@@ -1,14 +1,12 @@
+import OmdbApi from './controllers/omdbapi'
+
 export const FETCH_MOVIES = "FETCH_MOVIES";
-export const FETCH_POSTER_REQUEST = "FETCH_POSTER";
+export const SHOW_ERROR = "SHOW_ERROR";
 
-
-export const fetchMovies = (searchString) => {
+export const fetchMovies = (omdbApi, searchString) => {
    return function(dispatch) {
       dispatch(requestMovies(searchString));
-
-      return fetch('http://www.omdbapi.com/?s=' + searchString + '&plot=short&r=json')
-         .then(response => response.json())
-         .then(json => dispatch(receiveMovies(json.Search)));
+      return omdbApi.fetchMovies.call(omdbApi, dispatch, searchString);
    }
 }
 
@@ -24,5 +22,12 @@ export const receiveMovies = (movies = []) => {
       type: FETCH_MOVIES,
       status: 'success',
       movies: movies
+   }
+}
+
+export const showErrorMessage = (errorMessage) => {
+   return {
+      type: SHOW_ERROR,
+      errorMessage
    }
 }

@@ -158,3 +158,13 @@ body {
     font-weight: bold;
     font-size: 15pt;
 }
+
+.errorMessage {
+    width: 60%;
+    margin: 0px auto 0px auto;
+    background-color: #D6A0A0;
+    border: 1px solid red;
+    padding: 10px;
+    color: #A00000;
+    text-align: center;
+}

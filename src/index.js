@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { moviesReducer } from './reducers'
+import OmdbApi from './controllers/omdbapi'
+
 require("./styles/style.css");
 
 const store = createStore(
@@ -12,7 +14,9 @@ const store = createStore(
    {searchString: '', isFetching: false, movies: []},
    applyMiddleware(thunkMiddleware));
 
+const omdbApi = new OmdbApi(store.dispatch);
+
 ReactDOM.render(
    <Provider store={store}>
-      <App />
+      <App omdbApi={omdbApi} />
    </Provider>, document.getElementById('root'));

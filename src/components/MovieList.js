@@ -7,6 +7,7 @@ const MovieListInt =  React.createClass({
    render: function() {
       return (
             <div id="movieList">
+            { this.props.errorMessage ? <div className="errorMessage">{ this.props.errorMessage }</div> : null }
             { this.props.movies.map(movie => <Movie key={movie.imdbID} {...movie}/>) }
             </div>
       );
@@ -24,7 +25,8 @@ const MovieListInt =  React.createClass({
 
 const mapStateToProps = (state, props) => {
    return {
-      movies: state.movies
+      movies: state.movies,
+      errorMessage: state.errorMessage
    }
 }
 

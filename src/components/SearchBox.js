@@ -48,10 +48,10 @@ const mapStateToProps = (state, props) => {
    }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
    return {
       onSearchBoxSubmit: (searchString) => {
-         dispatch(fetchMovies(searchString));
+         dispatch(fetchMovies(ownProps.omdbApi, searchString));
       }
    }
 }
