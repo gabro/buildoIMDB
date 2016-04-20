@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { moviesReducer } from './reducers'
+require("./styles/style.css");
 
 const store = createStore(
    moviesReducer,

@@ -10,9 +10,10 @@ const SearchBoxInt =  React.createClass({
 
    render: function() {
       return (
-         <div>
-            <input className="searchBox" type="text" placeholder="Type something to start" value={this.props.searchString} onChange={this.handleChange} />
-         </div>
+         <form className="form-wrapper cf">
+            <input type="text" placeholder="Search here..." value={this.props.searchString} onChange={this.handleChange} required />
+            <button type="submit">Search</button>
+         </form>
       );
    },
 
