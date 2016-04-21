@@ -8,13 +8,24 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/index'
   ],
+  resolve: {
+	    extensions: ['', '.js', '.jsx', '.scss'],
+	    alias: {
+	        //'es6-promise': path.join(folders.NPM, 'es6-promise', 'es6-promise.js'),
+	        //'fetch': path.join(folders.NPM, 'whatwg-fetch', 'fetch.js'),
+	    }
+	},
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+	    Promise: 'imports?this=>global!exports?global.Promise!es6-promise',
+	    fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+	})
   ],
   module: {
     loaders: [
